@@ -19,6 +19,17 @@ Route::get('/', function () {
 });
 
 Route::post('/register', [AuthController::class,'register']);
+Route::post('/login',[AuthController::class,'login']);
+
+Route::group(
+    ['middleware' => 'jwt.auth'],
+        function(){
+            Route::get('/profile', [AuthController::class, 'profile']);
+            Route::get('/logout', [AuthController::class, 'logout']);
+            Route::put('/profile/config/{id}', [AuthController::class, 'update']);
+            // Route::get();
+        }
+);
     
 
 
