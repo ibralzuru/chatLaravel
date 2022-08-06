@@ -123,7 +123,6 @@ class AuthController extends Controller
 
            if (isset($name)) {
             $user->name = $name;
-           }else if (isset($email)){
             $user->email = $email;
            }
 

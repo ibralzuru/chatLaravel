@@ -30,6 +30,13 @@ Route::group(
             // Route::get();
         }
 );
+Route::group(
+    ['middleware' => 'jwt.auth'],
+        function(){
+            Route::post('/createParty', [PartyController::class, 'createParty']);
+        }
+);
+    
     
 
 
