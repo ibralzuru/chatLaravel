@@ -9,7 +9,10 @@ class GameApp extends Model
 {
     use HasFactory;
 
-    public function party(){
-        return $this->hasMany(Party::class);
+    public function canal(){
+        return $this->hasMany(Canal::class);
+    }
+    public function user(){
+        return $this->belongsToMany(User::class);
     }
 }

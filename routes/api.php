@@ -3,6 +3,8 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\CanalController;
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -33,9 +35,12 @@ Route::group(
 Route::group(
     ['middleware' => 'jwt.auth'],
         function(){
-            Route::post('/createParty', [PartyController::class, 'createParty']);
+            Route::post('/addUserToCanal/{id}', [CanalController::class,'adUserToCanal']);
+            Route::delete('/deleteUserToCanal/{id}', [CanalController::class,'deleteUserToCanal']);
+            Route::post('/createCanal/{id}', [CanalController::class,'createCanal']);
         }
 );
+
     
     
 
