@@ -91,19 +91,6 @@ public function deleteUserToCanal($id){
 
         $user = User::query()->find($userId);         
         $canal = Canal::query()->find($canalId);
-       //$asoc_existe = DB::table('party_user')->where('party_id', $partyId)->value('id');
-        Log::info('asco ' . $asoc_existe);
-
-        //if(!$asoc_existe){
-          //  return response()->json(
-              //  [
-            //        'success' => false,
-              //      'message' => 'User is not added to this party'                        
-              //  ], 
-           // 400
-           // );
-        //}
-        
         $user->canal()->detach($canal);  
 
         return response()->json(

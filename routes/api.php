@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CanalController;
+use App\Http\Controllers\GameController;
 
 /*
 |--------------------------------------------------------------------------
@@ -38,6 +39,13 @@ Route::group(
             Route::post('/addUserToCanal/{id}', [CanalController::class,'adUserToCanal']);
             Route::delete('/deleteUserToCanal/{id}', [CanalController::class,'deleteUserToCanal']);
             Route::post('/createCanal/{id}', [CanalController::class,'createCanal']);
+        }
+);
+Route::group(
+    ['middleware' => 'jwt.auth'],
+        function(){
+            Route::post('/addUserToGame/{id}', [GameController::class,'addUserToGame']);
+            Route::delete('/deleteUserToGame/{id}', [GameController::class,'deleteUserToGame']);
         }
 );
 
