@@ -9,7 +9,7 @@ class Canal extends Model
 {
     use HasFactory;
     public function games(){
-        return $this->belongsTo(GameApp::class);
+        return $this->belongsTo(Game::class);
     }
     public function users(){
         return $this->belongsToMany(User::class);

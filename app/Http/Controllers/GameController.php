@@ -3,6 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Game;
+use App\Models\User;
+use App\Models\Canal;
+use Illuminate\Support\Facades\Log;
 
 class GameController extends Controller
 {
