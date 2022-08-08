@@ -14,32 +14,32 @@ class CanalController extends Controller
 public function adUserToCanal($id){
     
     try {
-     Log::info('entrando a la party');
+     Log::info('entrando al canal');
 
         $userId = auth()->user()->id;
         $canalId = $id;
 
         $user = User::query()->find($userId);         
-        $party = Canal::query()->find($canalId);
+        $canal = Canal::query()->find($canalId);
         
         $user->canal()->attach($canal);  
 
         return response()->json(
         [
             'success' => true,
-            'message' => 'Congrats you added correctly to this canal',
+            'message' => 'Felicidades te agregaste correctamente a este canal',
             'data' => $user, $canal
         ], 
     200
     );
 
     } catch (\Exception $exception){
-     Log::error('Error cant joing to this canal' . $exception->getMessage());
+     Log::error('El error no puede unirse a este canal' . $exception->getMessage());
 
         return response()->json(
             [
                 'success' => false,
-                'message' => 'You cant joing to this canal',
+                'message' => 'No puedes unirte a este canal.',
             ], 
         400
         );
@@ -62,19 +62,19 @@ public function adUserToCanal($id){
         return response()->json(
             [
                 'success'=> true,
-                'message'=> 'Canal successfully created',
+                'message'=> 'Canal creado con éxito',
                 'data'=> $canal,
             ],
         200
         );
 
     }catch (\Exception $exception){
-        Log::error('Error cant create a canal' . $exception->getMessage());
+        Log::error('Error no se puede crear un canal' . $exception->getMessage());
 
            return response()->json(
                [
                    'success' => false,
-                   'message' => 'You cant create a canal',
+                   'message' => 'No puedes crear un canal.',
                ], 
            400
            );
@@ -83,7 +83,7 @@ public function adUserToCanal($id){
 public function deleteUserToCanal($id){
     
     try {
-     Log::info('Saliendo de la canal');
+     Log::info('Saliendo del canal');
 
         $userId = auth()->user()->id;
         $canalId = $id;
@@ -95,19 +95,19 @@ public function deleteUserToCanal($id){
         return response()->json(
         [
             'success' => true,
-            'message' => 'Congrats you leave from this canal',
+            'message' => 'Felicidades te vas de este canal',
             'data' => $user , $canal
         ], 
     200
     );
 
     } catch (\Exception $exception){
-     Log::error('Error cant leave from this canal' . $exception->getMessage());
+     Log::error('El error no puede salir de este canal' . $exception->getMessage());
 
         return response()->json(
             [
                 'success' => false,
-                'message' => 'You cant leave from this canal',
+                'message' => 'No puedes salir de este canal.',
             ], 
         400
         );

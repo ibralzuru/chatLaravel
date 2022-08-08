@@ -46,11 +46,11 @@ class AuthController extends Controller
                 return response()->json(compact('user','token'),201);
 
         }catch(\Exception $exception){
-            Log::error('Error to create user'. $exception->getMessage());
+            Log::error('Error al crear usuario'. $exception->getMessage());
             return response()->json(
                 [
                     'success' => false,
-                    'message' => 'Error to create user'
+                    'message' => 'Error al crear usuario'
                     
                 ],
             404
@@ -67,7 +67,7 @@ class AuthController extends Controller
             return response()->json(
                 [
                     'success' => false,
-                    'message' => 'Invalid Email or Password',
+                    'message' => 'Correo electrónico o contraseña no válidos',
                 ], //Response::HTTP_UNAUTHORIZED
             );
         }
@@ -88,7 +88,7 @@ class AuthController extends Controller
             return response()->json(
                 [
                     'success' => true,
-                    'token' => 'You have successfully logged out'
+                    'token' => 'Has terminado tu sesion satisfactoriamente'
                 ]);
                   
             
@@ -96,7 +96,7 @@ class AuthController extends Controller
             return response()->json(
                 [
                     'succes' => false,
-                    'messege' => 'You cant logout'
+                    'messege' => 'no puedes cerrar sesión'
 
                 ],
                 404
@@ -131,7 +131,7 @@ class AuthController extends Controller
            return response()->json(
             [
                 'success' => true,
-                'message' => 'you have modifycate your profile successfully'
+                'message' => 'has modificado tu perfil con éxito'
                 
             ],
         200
@@ -142,7 +142,7 @@ class AuthController extends Controller
             return response()->json(
                 [
                     'success' => false,
-                    'message' => 'you cant modify your profile'
+                    'message' => 'no puedes modificar tu perfil'
                     
                 ],
             404

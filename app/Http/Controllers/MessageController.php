@@ -23,22 +23,78 @@ class MessageController extends Controller
             return response()->json(
                 [
                     'success'=> true,
-                    'message'=> 'message successfully created',
+                    'message'=> 'mensaje creado con exito',
                     'data'=> $text
                 ],
             200
             );
 
         }catch (\Exception $exception){
-            Log::error('Error cant this message ' . $exception->getMessage());
+            Log::error('Error no puedes crear un mensaje' . $exception->getMessage());
    
                return response()->json(
                    [
                        'success' => false,
-                       'message' => 'You cant create a message',
+                       'message' => 'No puedes crear un mensaje',
                    ], 
                400
                );
            }
     }
+
+    public function seeMessage ($id){
+        try {
+            $canalId = $id;
+            $messages = Message::query()->where('canal_id', $canalId)->get('text', 'created_at');
+            $sortMessages = $messages->sortByDesc('created_at');
+            $sortMessages->values()->all();
+
+
+                     return response()->json(
+                [
+                    'success' => true,
+                    'message' => 'Aqui puedes ver los mensajes',
+                    'data' => $messages
+                ], 
+              200
+            );
+
+        }catch (\Exception $exception){
+            Log::error('Error no puedes ver los mensajes' . $exception->getMessage());
+   
+               return response()->json(
+                   [
+                       'success' => false,
+                       'message' => 'No puedes ver los mensajes',
+                   ], 
+               400
+               );
+           }
+    }
+    public function deleteMessage ($id){
+        try {
+            $messages = Message::query()->where('id', $id);
+            $messages->delete();  
+                     return response()->json(
+                [
+                    'success' => true,
+                    'message' => 'mensaje eliminado',
+                    'data' => $messages
+                ], 
+              200
+            );
+
+        }catch (\Exception $exception){
+            Log::error('Error no puedes eliminar el mensaje' . $exception->getMessage());
+   
+               return response()->json(
+                   [
+                       'success' => false,
+                       'message' => 'No puedes eliminar el mensaje',
+                   ], 
+               400
+               );
+           }
+    }
+
 }

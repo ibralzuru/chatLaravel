@@ -1,3 +1,24 @@
+# Toc
+
+- [Toc](#toc)
+- [Chat Laravel](#Chat-Laravel)
+- [Instrucciones](#instrucciones)
+- [Endpoints](#endpoints)
+    - [Auth](#auth)
+    - [Canales](#canales)
+    - [Message](#message)
+    - [SuperAdmin](#superadmin)
+- [EER Diagrama](#eer-diagrama)
+  - [Autor](#autor)
+      - [Ibrahim Alzuru :venezuela:](#Ibrahim-Alzuru)
+
+
+
+# Chat Laravel
+
+En este proyecto se emulan las propiedades de un chat tradicional, donde podras registrarte, crear un canal, enviar mensajes, borrar mensajes, etc.
+El proyecto esta echo con Laravel.
+
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
 
 <p align="center">
@@ -7,58 +28,72 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
-## About Laravel
+# Instrucciones
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+Para poder lanzar peticiones necesitamos utilizar Postman (https://www.postman.com) y apuntar a este servidor de heroku: https://chat-php-ibra.herokuapp.com/api
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+# Endpoints
 
-## Learning Laravel
+A continuación se especifican el método a introducir en Postman, y lo que debemos introducir a continuación de la raiz para acceder a cada uno de los endpoints.
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+### Auth
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+POST / register --> Puedes registrar un usuario
 
-## Laravel Sponsors
+POST / login --> Puedes loguear el usuario
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+GET / me  --> Puedes ver el perfil del usuario
 
-### Premium Partners
+PUT / editProfile/id  --> Puedes modificar el perfil 
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
+GET / logout --> Puedes hacer el logout del usuario
 
-## Contributing
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+### Canales
 
-## Code of Conduct
+POST / addChannel/id --> Puedes añadir un nuevo canal
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+POST / addUserToChannel/id --> Puedes añadir un usuario al canal
 
-## Security Vulnerabilities
+GET / channel --> Puedes obtener todos los canales
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+GET / channel/id  --> Puedes ver un canal por su id
 
-## License
+PUT / channel/id  --> Puedes modificar el canal
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+DELETE / deleteUserFromChannel/id --> Puedes remover el usuario del canal
+
+DELETE / deleteChannel/id --> Puedes borrar el canal
+
+
+
+### Message
+
+POST / addMessage/id--> Puedes añadir un nuevo mensaje al canal
+
+GET / message/id --> Puedes revisar todos los mensajes de un canal
+
+PUT / message/id --> Puedes modificar el mensaje
+
+DELETE / deleteMessage/id --> Puedes modificar el mensaje
+
+
+### SuperAdmin
+
+POST / addRoleSuperAdmin/id --> Puedes añadir un rol de superadmin a un usuario
+
+DELETE / deleteRoleSuperAdmin/id --> Puedes remover el rol superadmin de un usuario
+
+
+# EER Diagrama
+
+![Diagram](img/diagrama.png)
+
+## Autor
+
+#### [Ibrahim Alzuru](https://github.com/ibralzuru) :venezuela:
+
+---------------------
+
+[:top:](#toc)

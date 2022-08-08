@@ -22,16 +22,16 @@ class UserController extends Controller
 
             return response()->json([
                 'success' => true,
-                'message' => "Rol superAdmin activated"
+                'message' => "Rol superAdmin activado"
             ]);
 
         } catch(\Exception $exception){
 
-            Log::error('Error change rol'. $exception->getMessage());
+            Log::error('Error al cambiar rol'. $exception->getMessage());
             return response()->json(
                 [
                     'success' => false,
-                    'message' => 'Error to change rol'
+                    'message' => 'Error al cambiar rol'
                     
                 ],
             404
@@ -50,16 +50,16 @@ class UserController extends Controller
 
             return response()->json([
                 'success' => true,
-                'message' => "Rol superAdmin Deteched",
+                'message' => "Rol superAdmin desechado",
             ]);
 
         } catch(\Exception $exception){
 
-            Log::error('Error change rol'. $exception->getMessage());
+            Log::error('Error al cambiar rol'. $exception->getMessage());
             return response()->json(
                 [
                     'success' => false,
-                    'message' => 'Error to change rol'
+                    'message' => 'Error al cambiar rol'
                     
                 ],
             404

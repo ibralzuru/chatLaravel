@@ -26,19 +26,19 @@ class GameController extends Controller
             return response()->json(
             [
                 'success' => true,
-                'message' => 'Congrats you added correctly to this game',
+                'message' => 'Felicidades te agregaste correctamente a este juego',
                 'data' => $user , $game
             ], 
         200
         );
  
         } catch (\Exception $exception){
-         Log::error('Error cant joing to this game' . $exception->getMessage());
+         Log::error('Error no se puede unir a este juego' . $exception->getMessage());
 
             return response()->json(
                 [
                     'success' => false,
-                    'message' => 'You cant joing to this game',
+                    'message' => 'No puedes unirte a este juego.',
                 ], 
             400
             );
@@ -48,7 +48,7 @@ class GameController extends Controller
      public function deleteUserToGame($id){
     
         try {
-         Log::info('Saliendo del game');
+         Log::info('Saliendo del juego');
 
             $userId = auth()->user()->id;
             $gameId = $id;
@@ -60,19 +60,19 @@ class GameController extends Controller
             return response()->json(
             [
                 'success' => true,
-                'message' => 'Congrats you leave from this game',
+                'message' => 'Felicidades has salido del juego',
                 'data' => $user , $game
             ], 
         200
         );
  
         } catch (\Exception $exception){
-         Log::error('Error cant leave from this game' . $exception->getMessage());
+         Log::error('El error no puede salir de este juego' . $exception->getMessage());
 
             return response()->json(
                 [
                     'success' => false,
-                    'message' => 'You cant leave from this game',
+                    'message' => 'No puedes salir de este juego.',
                 ], 
             400
             );
@@ -88,7 +88,7 @@ class GameController extends Controller
                 return response()->json(
                     [
                         'success' => false,
-                        'message' => 'Game have no canales'                        
+                        'message' => 'El juego no tiene canales'                        
                     ], 
                 400
                 );
@@ -97,19 +97,19 @@ class GameController extends Controller
             return response()->json(
                 [
                     'success' => true,
-                    'message' => 'This are the canales from this game',
+                    'message' => 'Estos son los canales de este juego',
                     'data' => $canales , $game
                 ], 
             200
             );
 
         } catch (\Exception $exception){
-            Log::error('Error cant find canales' . $exception->getMessage());
+            Log::error('Error no puedo encontrar canales' . $exception->getMessage());
    
                return response()->json(
                    [
                        'success' => false,
-                       'message' => 'You cant find canales',
+                       'message' => 'No puedes encontrar canales',
                    ], 
                400
                );

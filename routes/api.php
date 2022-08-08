@@ -53,7 +53,9 @@ Route::group(
 Route::group(
     ['middleware' => 'jwt.auth'],
         function(){
-        Route::post('/createMessage/{id}', [MessageController::class, 'createMessage']);       
+        Route::post('/createMessage/{id}', [MessageController::class, 'createMessage']);
+        Route::get('/seeMessage/{id}', [MessageController::class, 'seeMessage']);  
+        Route::delete('/deleteMessage/{id}', [MessageController::class, 'deleteMessage']);      
 }
 );
     
