@@ -70,6 +70,8 @@ GET / seeMessage/id --> Puedes ver todos los mensajes de un canal
 
 DELETE / deleteMessage/id --> Puedes borrar un mensaje
 
+PUT / updateMessage/id --> Pedes medificar el mensaje por la id
+
 
 
 # EER Diagrama
