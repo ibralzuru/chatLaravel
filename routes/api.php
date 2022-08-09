@@ -31,7 +31,7 @@ Route::group(
             Route::get('/profile', [AuthController::class, 'profile']);
             Route::get('/logout', [AuthController::class, 'logout']);
             Route::put('/profile/config/{id}', [AuthController::class, 'update']);
-            // Route::get();
+           
         }
 );
 Route::group(
@@ -57,6 +57,13 @@ Route::group(
         Route::get('/seeMessage/{id}', [MessageController::class, 'seeMessage']);  
         Route::delete('/deleteMessage/{id}', [MessageController::class, 'deleteMessage']);      
 }
+);
+Route::group(
+    ['middleware' => ['jwt.auth','SuperAdmin']],
+        function(){
+            Route::post('/addAdmin/{id}', [UserController::class, 'addAdmin']);
+            Route::post('/deleteAdmin/{id}', [UserController::class, 'deleteAdmin']);
+        }
 );
     
     

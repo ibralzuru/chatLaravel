@@ -28,7 +28,7 @@ El proyecto esta echo con Laravel.
 
 # Instrucciones
 
-Para poder lanzar peticiones necesitamos utilizar Postman (https://www.postman.com) y apuntar a este servidor de heroku: https://chat-php-ibra.herokuapp.com/api
+Para poder lanzar peticiones necesitamos utilizar Postman (https://www.postman.com) y apuntar a este servidor de heroku: https://chat-php-ibra.herokuapp.com
 
 
 # Endpoints
@@ -51,6 +51,7 @@ GET / logout --> Puedes hacer el logout del usuario
 ### Canales / Games
 
 POST / createCanal/id    --> Puedes crear un canal
+
 POST / addUserToCanal/id --> Puedes añadir un usuario al canal
 
 GET / getCanals/id  --> Puedes ver un canal por su id
@@ -59,15 +60,15 @@ DELETE / deleteUserToCanal/id --> Puedes borrar el usuario del canal
 
 POST / addUserToGame/id --> Añadir un usuario al juego
 
-DELETE / deleteUserToGame/id --> Boorar un usuario del juego
+DELETE / deleteUserToGame/id --> Borrar un usuario del juego
 
 ### Message
 
 POST / createMessage/id--> Puedes añadir un nuevo mensaje al canal
 
-GET / seeMessage/id --> Puedes ver un el mensaje
+GET / seeMessage/id --> Puedes ver todos los mensajes de un canal
 
-DELETE / deleteMessage/id --> Puedes modificar el mensaje
+DELETE / deleteMessage/id --> Puedes borrar un mensaje
 
 
 

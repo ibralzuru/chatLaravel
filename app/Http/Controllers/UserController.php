@@ -10,15 +10,15 @@ use PhpParser\Node\Stmt\TryCatch;
 
 class UserController extends Controller
 {
-    const SUPER_ADMIN_ROLE = 3;
+    const ADMIN_ROLE = 2;
 
-    public function adSuperAdmin($id){
+    public function addAdmin($id){
 
         try {
 
             $user= User::query()->find($id);
 
-            $user->roles()->attach(self::SUPER_ADMIN_ROLE);
+            $user->roles()->attach(self::ADMIN_ROLE);
 
             return response()->json([
                 'success' => true,
@@ -40,13 +40,13 @@ class UserController extends Controller
 
     }
 
-    public function deleteSuperAdmin($id){
+    public function deleteAdmin($id){
 
         try {
 
             $user= User::query()->find($id);
 
-            $user->roles()->detach(self::SUPER_ADMIN_ROLE);
+            $user->roles()->detach(self::ADMIN_ROLE);
 
             return response()->json([
                 'success' => true,
