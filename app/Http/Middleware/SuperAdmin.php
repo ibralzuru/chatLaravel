@@ -7,7 +7,7 @@ use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 
-class isSuperAdmin
+class SuperAdmin
 {
     /**
      * Handle an incoming request.
@@ -23,7 +23,7 @@ class isSuperAdmin
         $userId = auth()->user()->id;
         $user = User::find($userId);
 
-        $hasRole = $user->roles->contains(3);
+        $hasRole = $user->roles->contains(2);
         
         if(!$hasRole){
             return response()->json(

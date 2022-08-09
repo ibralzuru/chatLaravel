@@ -56,14 +56,16 @@ Route::group(
         function(){
         Route::post('/createMessage/{id}', [MessageController::class, 'createMessage']);
         Route::get('/seeMessage/{id}', [MessageController::class, 'seeMessage']);  
-        Route::delete('/deleteMessage/{id}', [MessageController::class, 'deleteMessage']);      
+        Route::delete('/deleteMessage/{id}', [MessageController::class, 'deleteMessage']); 
+        Route::put('/updateMessage/{id}', [MessageController::class, 'updateMessage']);     
 }
 );
 Route::group(
-    ['middleware' => ['jwt.auth','SuperAdmin']],
+    ['middleware' => ['jwt.auth','superAdmin']],
         function(){
             Route::post('/addAdmin/{id}', [UserController::class, 'addAdmin']);
             Route::post('/deleteAdmin/{id}', [UserController::class, 'deleteAdmin']);
+            
         }
 );
     
