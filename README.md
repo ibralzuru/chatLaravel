@@ -6,7 +6,6 @@
     - [Auth](#auth)
     - [Canales](#canales)
     - [Message](#message)
-    - [SuperAdmin](#superadmin)
 - [EER Diagrama](#eer-diagrama)
   - [Autor](#autor)
       - [Ibrahim Alzuru :venezuela:](#Ibrahim-Alzuru)
