@@ -1,6 +1,5 @@
-# Toc
+# Indice:
 
-- [Toc](#toc)
 - [Chat Laravel](#Chat-Laravel)
 - [Instrucciones](#instrucciones)
 - [Endpoints](#endpoints)
@@ -43,47 +42,34 @@ POST / register --> Puedes registrar un usuario
 
 POST / login --> Puedes loguear el usuario
 
-GET / me  --> Puedes ver el perfil del usuario
+GET / profile  --> Puedes ver el perfil del usuario
 
-PUT / editProfile/id  --> Puedes modificar el perfil 
+PUT / profile/config/id --> Puedes modificar el perfil 
 
 GET / logout --> Puedes hacer el logout del usuario
 
 
-### Canales
+### Canales / Games
 
-POST / addChannel/id --> Puedes añadir un nuevo canal
+POST / createCanal/id    --> Puedes crear un canal
+POST / addUserToCanal/id --> Puedes añadir un usuario al canal
 
-POST / addUserToChannel/id --> Puedes añadir un usuario al canal
+GET / getCanals/id  --> Puedes ver un canal por su id
 
-GET / channel --> Puedes obtener todos los canales
+DELETE / deleteUserToCanal/id --> Puedes borrar el usuario del canal
 
-GET / channel/id  --> Puedes ver un canal por su id
+POST / addUserToGame/id --> Añadir un usuario al juego
 
-PUT / channel/id  --> Puedes modificar el canal
-
-DELETE / deleteUserFromChannel/id --> Puedes remover el usuario del canal
-
-DELETE / deleteChannel/id --> Puedes borrar el canal
-
-
+DELETE / deleteUserToGame/id --> Boorar un usuario del juego
 
 ### Message
 
-POST / addMessage/id--> Puedes añadir un nuevo mensaje al canal
+POST / createMessage/id--> Puedes añadir un nuevo mensaje al canal
 
-GET / message/id --> Puedes revisar todos los mensajes de un canal
-
-PUT / message/id --> Puedes modificar el mensaje
+GET / seeMessage/id --> Puedes ver un el mensaje
 
 DELETE / deleteMessage/id --> Puedes modificar el mensaje
 
-
-### SuperAdmin
-
-POST / addRoleSuperAdmin/id --> Puedes añadir un rol de superadmin a un usuario
-
-DELETE / deleteRoleSuperAdmin/id --> Puedes remover el rol superadmin de un usuario
 
 
 # EER Diagrama
@@ -96,4 +82,4 @@ DELETE / deleteRoleSuperAdmin/id --> Puedes remover el rol superadmin de un usua
 
 ---------------------
 
-[:top:](#toc)
+[:top:](#indice)
