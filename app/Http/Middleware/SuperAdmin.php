@@ -23,7 +23,7 @@ class SuperAdmin
         $userId = auth()->user()->id;
         $user = User::find($userId);
 
-        $hasRole = $user->roles->contains(2);
+        $hasRole = $user->roles->contains(11);
         
         if(!$hasRole){
             return response()->json(
