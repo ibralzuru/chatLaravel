@@ -10,7 +10,7 @@ use PhpParser\Node\Stmt\TryCatch;
 
 class UserController extends Controller
 {
-    const ADMIN_ROLE = 2;
+    const ADMIN_ROLE = 11;
 
     public function addAdmin($id){
 
