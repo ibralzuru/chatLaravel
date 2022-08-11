@@ -104,7 +104,7 @@ class MessageController extends Controller
                 return response()->json(
                     [
                         'success' => false,
-                        'message' => 'message not found with this ID '
+                        'message' => 'mensaje no encontrado con este ID'
                     ]
                 );
             }
@@ -113,17 +113,17 @@ class MessageController extends Controller
             return response()->json(
             [
                 "success" => true,
-                "message" => 'message updated',
+                "message" => 'mensaje actualizado',
                 "data" => $text
             ],
         200
         );
         }catch (\Exception $exception) {
-            Log::error('Error updating this message ' .$exception->getMessage());
+            Log::error('Error al actualizar este mensaje' .$exception->getMessage());
             return response()->json(
                 [
                     "success" => false,
-                    "message" => 'Error to updating message',
+                    "message" => 'Error al actualizar mensaje',
                     "error" => $exception->getMessage()
                 ],
             500

@@ -18,7 +18,7 @@ class SuperAdmin
      */
     public function handle(Request $request, Closure $next)
     {
-        Log::alert("IsSuperAdmin middleware");
+        Log::alert("SuperAdmin middleware");
         
         $userId = auth()->user()->id;
         $user = User::find($userId);
@@ -29,7 +29,7 @@ class SuperAdmin
             return response()->json(
                 [
                     "success"=> true,
-                    "message"=> "Dont have permisions"
+                    "message"=> "no tienes permisos"
 
                 ],
                 400
