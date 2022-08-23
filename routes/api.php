@@ -38,7 +38,7 @@ Route::group(
 Route::group(
     ['middleware' => 'jwt.auth'],
         function(){
-            Route::post('/addUserToCanal/{id}', [CanalController::class,'adUserToCanal']);
+            Route::post('/addUserToCanal/{id}', [CanalController::class,'addUserToCanal']);
             Route::delete('/deleteUserToCanal/{id}', [CanalController::class,'deleteUserToCanal']);
             Route::post('/createCanal/{id}', [CanalController::class,'createCanal']);
         }

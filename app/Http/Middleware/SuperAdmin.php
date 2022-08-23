@@ -19,17 +19,17 @@ class SuperAdmin
     public function handle(Request $request, Closure $next)
     {
         Log::alert("SuperAdmin middleware");
-        
+
         $userId = auth()->user()->id;
         $user = User::find($userId);
 
         $hasRole = $user->roles->contains(11);
-        
-        if(!$hasRole){
+
+        if (!$hasRole) {
             return response()->json(
                 [
-                    "success"=> true,
-                    "message"=> "no tienes permisos"
+                    "success" => true,
+                    "message" => "no tienes permisos"
 
                 ],
                 400
