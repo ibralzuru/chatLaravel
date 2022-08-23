@@ -1,6 +1,6 @@
 <?php
 
-use Illuminate\Http\Request;
+
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CanalController;
@@ -40,6 +40,7 @@ Route::group(
         Route::post('/addUserToCanal/{id}', [CanalController::class, 'addUserToCanal']);
         Route::delete('/deleteUserToCanal/{id}', [CanalController::class, 'deleteUserToCanal']);
         Route::post('/createCanal/{id}', [CanalController::class, 'createCanal']);
+        Route::delete('/deleteCanal/{id}', [CanalController::class, 'deleteCanal']);
     }
 );
 Route::group(

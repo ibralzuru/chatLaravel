@@ -15,7 +15,7 @@ class CanalController extends Controller
         try {
             Log::info('entrando al canal');
 
-            $userId = auth()->user()->id;     
+            $userId = auth()->user()->id;
             $user = User::query()->find($userId);
             $user->canal()->attach($id);
 
@@ -76,7 +76,6 @@ class CanalController extends Controller
     }
     public function deleteUserToCanal($id)
     {
-
         try {
             Log::info('Saliendo del canal');
 
@@ -101,6 +100,29 @@ class CanalController extends Controller
                     'message' => 'No puedes salir de este canal.',
                 ],
                 400
+            );
+        }
+    }
+    public function deleteCanal($id)
+    {
+        try {
+            Log::info('Borrar Canal');
+            $canal = Canal::query()->find($id);
+
+            $canal->delete();
+            return response()->json([
+                'success' => true,
+                'message' => "canal borrado correctamente",
+            ]);
+        } catch (\Throwable $exception) {
+            Log::info('Error al borrar canal' . $exception->getMessage());
+            return response()->json(
+                [
+                    'success' => false,
+                    'message' => "Error al borrar canal"
+
+                ],
+                500
             );
         }
     }
