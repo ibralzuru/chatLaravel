@@ -41,6 +41,7 @@ Route::group(
         Route::delete('/deleteUserToCanal/{id}', [CanalController::class, 'deleteUserToCanal']);
         Route::post('/createCanal/{id}', [CanalController::class, 'createCanal']);
         Route::delete('/deleteCanal/{id}', [CanalController::class, 'deleteCanal']);
+        Route::put('/updateCanal/{id}',  [CanalController::class, 'updateCanal']);
     }
 );
 Route::group(

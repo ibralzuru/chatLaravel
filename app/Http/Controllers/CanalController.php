@@ -6,6 +6,7 @@ use App\Models\Canal;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Validator;
 
 class CanalController extends Controller
 {
@@ -120,6 +121,50 @@ class CanalController extends Controller
                 [
                     'success' => false,
                     'message' => "Error al borrar canal"
+                ],
+                500
+            );
+        }
+    }
+
+    public function updateCanal($id, Request $request)
+    {
+        try {
+            Log::info('Actualizando canal');
+            $canal = Canal::find($id);
+            $validator = Validator::make($request->all(), [
+                'name' => 'string',
+            ]);
+            if ($validator->fails()) {
+                return response()->json(
+                    [
+                        "success" => false,
+                        "message" => $validator->errors()
+                    ],
+                    400
+                );
+            };
+
+            if ($request->input('name')) {
+                $canal->name = $request->input('name');
+            };
+
+            $canal->save();
+            return response()->json(
+                [
+                    'success' => true,
+                    'message' => "canal actualizado con exito",
+                    'data' => $canal
+
+                ],
+                200
+            );
+        } catch (\Exception $exception) {
+            Log::info('Error al actualizar canal' . $exception->getMessage());
+            return response()->json(
+                [
+                    'success' => false,
+                    'message' => "Error actualizando el canal"
 
                 ],
                 500
