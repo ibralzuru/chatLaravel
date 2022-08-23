@@ -83,17 +83,14 @@ class CanalController extends Controller
             Log::info('Saliendo del canal');
 
             $userId = auth()->user()->id;
-            $canalId = $id;
-
             $user = User::query()->find($userId);
-            $canal = Canal::query()->find($canalId);
-            $user->canal()->detach($canal);
+            $user->canal()->detach($id);
 
             return response()->json(
                 [
                     'success' => true,
                     'message' => 'Felicidades te vas de este canal',
-                    'data' => $user, $canal
+                    'data' => $user, $id
                 ],
                 200
             );
