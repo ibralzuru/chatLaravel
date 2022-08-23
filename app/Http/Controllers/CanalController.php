@@ -10,10 +10,8 @@ use Illuminate\Support\Facades\Log;
 class CanalController extends Controller
 {
     //
-
     public function addUserToCanal($id)
     {
-
         try {
             Log::info('entrando al canal');
 

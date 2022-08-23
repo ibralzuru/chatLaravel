@@ -51,11 +51,13 @@ class User extends Authenticatable implements JWTSubject
     {
         return [];
     }
-    public function canal(){
+    public function canal()
+    {
         return $this->belongsToMany(Canal::class);
     }
 
-    public function game(){
+    public function game()
+    {
         return $this->belongsToMany(Game::class);
     }
     public function roles()

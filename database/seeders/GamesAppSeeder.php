@@ -16,28 +16,28 @@ class GamesAppSeeder extends Seeder
     {
         DB::table('games')->insert(
             [
-                'name'=> 'Tekken 3',
-                'category'=> 'fight'
+                'name' => 'Tekken 3',
+                'category' => 'fight'
             ]
         );
         DB::table('games')->insert(
             [
-                'name'=> 'Tenchu',
-                'category'=> 'adventure'
-                
+                'name' => 'Tenchu',
+                'category' => 'adventure'
+
             ]
         );
         DB::table('games')->insert(
             [
-                'name'=> 'Nba live',
-                'category'=> 'sport'
-                
+                'name' => 'Nba live',
+                'category' => 'sport'
+
             ]
         );
         DB::table('games')->insert(
             [
-                'name'=> 'Fifa 2022',
-                'category'=> 'sport'
+                'name' => 'Fifa 2022',
+                'category' => 'sport'
             ]
         );
     }

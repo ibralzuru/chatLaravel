@@ -8,11 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 class Canal extends Model
 {
     use HasFactory;
-    public function games(){
+    public function games()
+    {
         return $this->belongsTo(Game::class);
     }
-    public function users(){
+    public function users()
+    {
         return $this->belongsToMany(User::class);
     }
 }
-

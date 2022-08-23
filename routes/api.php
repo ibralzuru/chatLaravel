@@ -23,53 +23,46 @@ Route::get('/', function () {
     return 'Bienvenido a mi app';
 });
 
-Route::post('/register', [AuthController::class,'register']);
-Route::post('/login',[AuthController::class,'login']);
+Route::post('/register', [AuthController::class, 'register']);
+Route::post('/login', [AuthController::class, 'login']);
 
 Route::group(
     ['middleware' => 'jwt.auth'],
-        function(){
-            Route::get('/profile', [AuthController::class, 'profile']);
-            Route::get('/logout', [AuthController::class, 'logout']);
-            Route::put('/profile/config/{id}', [AuthController::class, 'update']);
-           
-        }
+    function () {
+        Route::get('/profile', [AuthController::class, 'profile']);
+        Route::get('/logout', [AuthController::class, 'logout']);
+        Route::put('/profile/config/{id}', [AuthController::class, 'update']);
+    }
 );
 Route::group(
     ['middleware' => 'jwt.auth'],
-        function(){
-            Route::post('/addUserToCanal/{id}', [CanalController::class,'addUserToCanal']);
-            Route::delete('/deleteUserToCanal/{id}', [CanalController::class,'deleteUserToCanal']);
-            Route::post('/createCanal/{id}', [CanalController::class,'createCanal']);
-        }
+    function () {
+        Route::post('/addUserToCanal/{id}', [CanalController::class, 'addUserToCanal']);
+        Route::delete('/deleteUserToCanal/{id}', [CanalController::class, 'deleteUserToCanal']);
+        Route::post('/createCanal/{id}', [CanalController::class, 'createCanal']);
+    }
 );
 Route::group(
     ['middleware' => 'jwt.auth'],
-        function(){
-            Route::post('/addUserToGame/{id}', [GameController::class,'addUserToGame']);
-            Route::delete('/deleteUserToGame/{id}', [GameController::class,'deleteUserToGame']);
-            Route::get('/getCanals/{id}', [GameController::class,'findCanales']);
-        }
+    function () {
+        Route::post('/addUserToGame/{id}', [GameController::class, 'addUserToGame']);
+        Route::delete('/deleteUserToGame/{id}', [GameController::class, 'deleteUserToGame']);
+        Route::get('/getCanals/{id}', [GameController::class, 'findCanales']);
+    }
 );
 Route::group(
     ['middleware' => 'jwt.auth'],
-        function(){
+    function () {
         Route::post('/createMessage/{id}', [MessageController::class, 'createMessage']);
-        Route::get('/seeMessage/{id}', [MessageController::class, 'seeMessage']);  
-        Route::delete('/deleteMessage/{id}', [MessageController::class, 'deleteMessage']); 
-        Route::put('/updateMessage/{id}', [MessageController::class, 'updateMessage']);     
-}
+        Route::get('/seeMessage/{id}', [MessageController::class, 'seeMessage']);
+        Route::delete('/deleteMessage/{id}', [MessageController::class, 'deleteMessage']);
+        Route::put('/updateMessage/{id}', [MessageController::class, 'updateMessage']);
+    }
 );
 Route::group(
-    ['middleware' => ['jwt.auth','superAdmin']],
-        function(){
-            Route::post('/addAdmin/{id}', [UserController::class, 'addAdmin']);
-            Route::post('/deleteAdmin/{id}', [UserController::class, 'deleteAdmin']);
-            
-        }
+    ['middleware' => ['jwt.auth', 'superAdmin']],
+    function () {
+        Route::post('/addAdmin/{id}', [UserController::class, 'addAdmin']);
+        Route::post('/deleteAdmin/{id}', [UserController::class, 'deleteAdmin']);
+    }
 );
-    
-    
-
-
-

@@ -11,55 +11,57 @@ use Tymon\JWTAuth\Facades\JWTAuth;
 
 class AuthController extends Controller
 {
-    public function register(Request $request){
-     
+    public function register(Request $request)
+    {
         try {
-            $validator = Validator::make($request->all(),
+            $validator = Validator::make(
+                $request->all(),
                 [
                     'name' => 'required|string|max:25',
                     'email' => 'required|string|email|max:255|unique:users',
                     'password' => 'required|string|min:6|max:25|regex:/[#$%^&*()+=!?¿.,:;]/i',
-                ]);
-    
-                if($validator->fails()){
-                    return response()->json(
+                ]
+            );
 
-                        [
-                            'success'=> true,
-                            'message' => $validator->errors()
-                        ],
-                        400
-                    );
-                }
-    
-                $user = User::create(
+            if ($validator->fails()) {
+                return response()->json(
+
                     [
-                        'name' => $request->get('name'),
-                        'email' => $request->get('email'),
-                        'password' => bcrypt($request->password)
-                    ]
+                        'success' => true,
+                        'message' => $validator->errors()
+                    ],
+                    400
                 );
-                
-                $user->roles()->attach(1);
+            }
 
-                $token = JWTAuth::fromUser($user);
-                return response()->json(compact('user','token'),201);
+            $user = User::create(
+                [
+                    'name' => $request->get('name'),
+                    'email' => $request->get('email'),
+                    'password' => bcrypt($request->password)
+                ]
+            );
 
-        }catch(\Exception $exception){
-            Log::error('Error al crear usuario'. $exception->getMessage());
+            $user->roles()->attach(1);
+
+            $token = JWTAuth::fromUser($user);
+            return response()->json(compact('user', 'token'), 201);
+        } catch (\Exception $exception) {
+            Log::error('Error al crear usuario' . $exception->getMessage());
             return response()->json(
                 [
                     'success' => false,
                     'message' => 'Error al crear usuario'
-                    
+
                 ],
-            404
+                404
             );
         };
     }
 
-    public function login(Request $request){
-    
+    public function login(Request $request)
+    {
+
         $input = $request->only('email', 'password');
         $jwt_token = null;
 
@@ -76,22 +78,22 @@ class AuthController extends Controller
             'token' => $jwt_token,
         ]);
     }
-    public function logout(Request $request){
+    public function logout(Request $request)
+    {
         try {
-            $this->validate($request,
-            [
-                'token' => 'require'
-            ]);
-            
-
+            $this->validate(
+                $request,
+                [
+                    'token' => 'require'
+                ]
+            );
             JWTAuth::invalidate($request->token);
             return response()->json(
                 [
                     'success' => true,
                     'token' => 'Has terminado tu sesion satisfactoriamente'
-                ]);
-                  
-            
+                ]
+            );
         } catch (\Exception $exception) {
             return response()->json(
                 [
@@ -104,50 +106,50 @@ class AuthController extends Controller
         }
     }
 
-    public function profile(){
+    public function profile()
+    {
         return response()->json(
             [
-            "susccess" => true,
-            "data" => auth()->user()
+                "susccess" => true,
+                "data" => auth()->user()
             ]
         );
     }
 
-    public function update(Request $request, $id){
+    public function update(Request $request, $id)
+    {
         try {
-           $user = User::query()->find($id);
+            $user = User::query()->find($id);
 
 
-           $name = $request->input('name');
-           $email =$request->input('email');
+            $name = $request->input('name');
+            $email = $request->input('email');
 
-           if (isset($name)) {
-            $user->name = $name;
-            $user->email = $email;
-           }
+            if (isset($name)) {
+                $user->name = $name;
+                $user->email = $email;
+            }
 
-           $user->save();
+            $user->save();
 
-           return response()->json(
-            [
-                'success' => true,
-                'message' => 'has modificado tu perfil con éxito'
-                
-            ],
-        200
-        );
+            return response()->json(
+                [
+                    'success' => true,
+                    'message' => 'has modificado tu perfil con éxito'
 
-        } catch(\Exception $exception){
-           
+                ],
+                200
+            );
+        } catch (\Exception $exception) {
+
             return response()->json(
                 [
                     'success' => false,
                     'message' => 'no puedes modificar tu perfil'
-                    
+
                 ],
-            404
+                404
             );
         }
     }
-
 }

@@ -9,10 +9,12 @@ class Game extends Model
 {
     use HasFactory;
 
-    public function canal(){
+    public function canal()
+    {
         return $this->hasMany(Canal::class);
     }
-    public function user(){
+    public function user()
+    {
         return $this->belongsToMany(User::class);
     }
 }
