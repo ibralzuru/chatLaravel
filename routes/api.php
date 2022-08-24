@@ -34,6 +34,16 @@ Route::group(
         Route::put('/profile/config/{id}', [AuthController::class, 'update']);
     }
 );
+
+// GAMES ROUTES -------------
+Route::group(
+    ['middleware' => 'jwt.auth'/* ,'isSuperAdmin' */], 
+    function (){
+    Route::post('/createGame',  [GameController::class, 'createGame']);
+  /*   Route::delete('/deleteGame/{id}',  [GameController::class, 'deleteGameById']);
+    Route::get('/game/{id}',  [GameController::class, 'getGameById']); */
+    
+});
 Route::group(
     ['middleware' => 'jwt.auth'],
     function () {
