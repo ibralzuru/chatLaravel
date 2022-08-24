@@ -41,7 +41,7 @@ Route::group(
     function (){
     Route::post('/createGame',  [GameController::class, 'createGame']);
     Route::delete('/deleteGame/{id}',  [GameController::class, 'deleteGameById']);
-    //Route::get('/game/{id}',  [GameController::class, 'getGameById']); 
+    Route::get('/game/{id}',  [GameController::class, 'getGameById']); 
     
 });
 Route::group(
