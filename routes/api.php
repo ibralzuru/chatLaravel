@@ -35,7 +35,7 @@ Route::group(
     }
 );
 
-// GAMES ROUTES -------------
+// Rutas Games
 Route::group(
     ['middleware' => 'jwt.auth'], 
     function (){

@@ -7,7 +7,7 @@ use App\Models\User;
 use App\Models\Canal;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Validator;
+
 
 class GameController extends Controller
 {
@@ -15,7 +15,7 @@ class GameController extends Controller
     public function createGame(Request $request)
     {
         try {
-            Log::info('Creating game');
+            Log::info('Creando juego');
             $name = $request->input('name');
             $category = $request->input('category');
 
@@ -27,17 +27,17 @@ class GameController extends Controller
             return response()->json(
                 [
                     'success' => true,
-                    'message' => 'Party successfully created',
+                    'message' => 'Canal creado correctamente',
                     'data' => $newGame
                 ],
                 200
             );
         } catch (\Exception $exception) {
-            Log::info('Error creating the game' . $exception->getMessage());
+            Log::info('Error al crear el juego' . $exception->getMessage());
             return response()->json(
                 [
                     'success' => false,
-                    'message' => "Error creating the game"
+                    'message' => "Error al crear el juego"
 
                 ],
                 500
@@ -47,20 +47,20 @@ class GameController extends Controller
     public function deleteGameById($id)
     {
         try {
-            Log::info('Deleting game');
+            Log::info('borrando juego');
             $game = Game::query()->find($id);
             $game->delete();
 
             return response()->json([
                 'success' => true,
-                'message' => "Game deleted succesfull",
+                'message' => "Juego borrado",
             ]);
         } catch (\Exception $exception) {
-            Log::info('Error deleting game' . $exception->getMessage());
+            Log::info('Error al borrar juego' . $exception->getMessage());
             return response()->json(
                 [
                     'success' => false,
-                    'message' => "Error deleting game"
+                    'message' => "Error al borrar juego"
 
                 ],
                 500
@@ -70,16 +70,14 @@ class GameController extends Controller
     public function getGameById($id)
     {
         try {
-            Log::info('Getting game by id');
-            /* $game = Game::query()->find($id);
-            $getGame = Game::query()->find($id)->canal->name; */
+            Log::info('obteniendo juego por id');
             $game = Game::query()->find($id)->get(); 
 
 
             if(!$game){
                 return response()->json([
                     'success' => true,
-                    'message' => "Game not found",
+                    'message' => "juego no encontrado",
                 ],
                 404
             );
@@ -87,15 +85,15 @@ class GameController extends Controller
             
             return response()->json([
                 'success' => true,
-                'message' => "Game retrieved successfull",
+                'message' => "Juego recuperado con éxito",
                 'data' => $game
             ]);
         } catch (\Exception $exception) {
-            Log::info('Error getting game' . $exception->getMessage());
+            Log::info('Error al recuperar juego' . $exception->getMessage());
             return response()->json(
                 [
                     'success' => false,
-                    'message' => "Error getting game"
+                    'message' => "Error al recuperar juego"
 
                 ],
                 500
@@ -106,7 +104,7 @@ class GameController extends Controller
     {
 
         try {
-            Log::info('Uniendote al game');
+            Log::info('Uniendote al juego');
 
             $userId = auth()->user()->id;
             $gameId = $id;
