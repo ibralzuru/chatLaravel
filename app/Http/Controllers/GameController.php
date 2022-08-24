@@ -18,6 +18,8 @@ class GameController extends Controller
             Log::info('Creating game');
             $validator = Validator::make($request->all(), [
                 'name' => 'required|string|max:25',
+                'category'=> 'required|string|max:25',
+
             ]);
             if ($validator->fails()) {
                 return response()->json(
@@ -30,6 +32,7 @@ class GameController extends Controller
             };
             $newGame = Game::create([
                 'name' => $request->input('name'),
+                'category' => $request->input('category'),
                 
             ]);
             $newGame->save();
