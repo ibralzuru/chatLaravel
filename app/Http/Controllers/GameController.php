@@ -33,7 +33,7 @@ class GameController extends Controller
             $newGame = Game::create([
                 'name' => $request->get('name'),
                 'category' => $request->get('category'),
-                'user_id' => auth()->user()->id,
+              /*   'user_id' => auth()->user()->id, */
                 
             ]);
            /*  $newGame->save(); */
