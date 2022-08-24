@@ -72,7 +72,7 @@ class GameController extends Controller
         try {
             Log::info('Getting game by id');
             $game = Game::query()->find($id);
-            $getGame = Game::query()->find($id)->canales->name;
+            $getGame = Game::query()->find($id)->canals->name;
 
 
             if(!$game){
