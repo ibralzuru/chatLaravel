@@ -44,6 +44,29 @@ class GameController extends Controller
             );
         }
     }
+    public function deleteGameById($id)
+    {
+        try {
+            Log::info('Deleting game');
+            $game = Game::query()->find($id);
+            $game->delete();
+
+            return response()->json([
+                'success' => true,
+                'message' => "Game deleted succesfull",
+            ]);
+        } catch (\Exception $exception) {
+            Log::info('Error deleting game' . $exception->getMessage());
+            return response()->json(
+                [
+                    'success' => false,
+                    'message' => "Error deleting game"
+
+                ],
+                500
+            );
+        }
+    }
     public function addUserToGame($id)
     {
 

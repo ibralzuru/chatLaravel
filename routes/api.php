@@ -37,11 +37,11 @@ Route::group(
 
 // GAMES ROUTES -------------
 Route::group(
-    ['middleware' => 'jwt.auth'/* ,'isSuperAdmin' */], 
+    ['middleware' => 'jwt.auth'], 
     function (){
     Route::post('/createGame',  [GameController::class, 'createGame']);
-  /*   Route::delete('/deleteGame/{id}',  [GameController::class, 'deleteGameById']);
-    Route::get('/game/{id}',  [GameController::class, 'getGameById']); */
+    Route::delete('/deleteGame/{id}',  [GameController::class, 'deleteGameById']);
+    //Route::get('/game/{id}',  [GameController::class, 'getGameById']); 
     
 });
 Route::group(
