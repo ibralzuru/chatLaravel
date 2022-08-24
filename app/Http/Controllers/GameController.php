@@ -16,33 +16,22 @@ class GameController extends Controller
     {
         try {
             Log::info('Creating game');
-            $validator = Validator::make($request->all(), [
-                'name' => 'required|string|max:25',
-                'category'=> 'required|string|max:25',
+            $name = $request->input('name');
+            $category = $request->input('category');
 
-            ]);
-            if ($validator->fails()) {
-                return response()->json(
-                    [
-                        "success" => false,
-                        "message" => $validator->errors()
-                    ],
-                    400
-                );
-            };
-            $newGame = Game::create([
-                'name' => $request->get('name'),
-                'category' => $request->get('category'),
-              /*   'user_id' => auth()->user()->id, */
-                
-            ]);
-           /*  $newGame->save(); */
+            $newGame = new Game();
+            $newGame->name = $name;
+            $newGame->category = $category;
+            $newGame->save();
 
-            return response()->json([
-                'success' => true,
-                'message' => "Game created successfull",
-                'data' => $newGame,
-            ]);
+            return response()->json(
+                [
+                    'success' => true,
+                    'message' => 'Party successfully created',
+                    'data' => $newGame
+                ],
+                200
+            );
         } catch (\Exception $exception) {
             Log::info('Error creating the game' . $exception->getMessage());
             return response()->json(
