@@ -47,7 +47,6 @@ class CanalController extends Controller
             $canalName = $request->input('name');
             $userId = auth()->user()->id;
             $gameId = $id;
-
             $canal = new Canal();
             $canal->name = $canalName;
             $canal->game_id = $gameId;
