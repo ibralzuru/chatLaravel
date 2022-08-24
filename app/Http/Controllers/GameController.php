@@ -71,8 +71,9 @@ class GameController extends Controller
     {
         try {
             Log::info('Getting game by id');
-            $game = Game::query()->find($id);
-            $getGame = Game::query()->find($id)->canal->name;
+            /* $game = Game::query()->find($id);
+            $getGame = Game::query()->find($id)->canal->name; */
+            $game = Game::query()->where('game_id' , $id)->find($id)->get(); 
 
 
             if(!$game){
@@ -87,7 +88,7 @@ class GameController extends Controller
             return response()->json([
                 'success' => true,
                 'message' => "Game retrieved successfull",
-                'data' => $game, $getGame,
+                'data' => $game
             ]);
         } catch (\Exception $exception) {
             Log::info('Error getting game' . $exception->getMessage());
