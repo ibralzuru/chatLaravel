@@ -47,8 +47,20 @@ PUT / profile/config/id --> Puedes modificar el perfil
 
 GET / logout --> Puedes hacer el logout del usuario
 
+### Games
 
-### Canales / Games
+POST/ createGame --> Puedes crear un juego
+
+DELETE/ deleteGame/{id} --> Puedes borrar un juego
+
+GET / game/{id} --> Puedes buscar un juego por su id
+
+POST / addUserToGame/id --> Añadir un usuario al juego
+
+DELETE / deleteUserToGame/id --> Borrar un usuario del juego
+
+
+### Canales 
 
 POST / createCanal/id    --> Puedes crear un canal
 
@@ -58,9 +70,7 @@ GET / getCanals/id  --> Puedes ver un canal por su id
 
 DELETE / deleteUserToCanal/id --> Puedes borrar el usuario del canal
 
-POST / addUserToGame/id --> Añadir un usuario al juego
 
-DELETE / deleteUserToGame/id --> Borrar un usuario del juego
 
 ### Message
 
